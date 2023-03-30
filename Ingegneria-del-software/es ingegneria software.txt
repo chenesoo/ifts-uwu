@@ -1,0 +1,33 @@
+//es 1
+//verifico quale numero è più grande
+funzione confronta
+    se numero1 > numero2
+    allora
+        risultato = "primo"
+    altrimenti
+        risultato = "secondo"
+    fine se
+    //restituisco il risultato
+    restituisci risultato
+fine
+
+
+//es 2
+//eseguo la moltiplicazione di 2 numeri
+funzione moltiplica
+    risultato = numero1 * numero2
+    //restituisco il risultato
+    restituisci risultato
+fine
+
+
+//es3
+funzione elabora
+    se a > b
+    allora
+        risultato = "a + b * c"
+    altrimenti
+        risultato = "a + b / c"
+    fine se
+    //restituisco il risultato
+fine
