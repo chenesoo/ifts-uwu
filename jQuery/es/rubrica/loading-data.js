@@ -27,18 +27,7 @@ function creaBtnAzione(id, azione) {
     return divCol;
 }
 
-function creaDivRighe(indice) {
-    let divRow = document.createElement("div");
-    divRow.setAttribute("data-id", indice);
 
-    if (indice % 2 === 0) {
-        divRow.className = "row";
-    } else {
-        divRow.className = "row bg-light";
-    }
-
-    return divRow;
-}
 
 function stampaContatti(lista) {
     let divRowRoot = document.getElementById("rubrica-row");

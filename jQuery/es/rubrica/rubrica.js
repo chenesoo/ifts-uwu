@@ -86,9 +86,10 @@
         }
         ricercaContatto(nome) {
             let lista = [];
+            let valore = nome.toLowerCase();
             for (let i = 0; i < this.database.length; i++) {
                 let contatto = this.database[i];
-                if (contatto.nome.indexOf(nome) > -1 || contatto.cognome.indexOf(nome) > -1) {
+                if (contatto.nome.toLowerCase().indexOf(valore) > -1 || contatto.cognome.toLowerCase().indexOf(valore) > -1) {
                     lista.push(contatto);
                 }
             }
