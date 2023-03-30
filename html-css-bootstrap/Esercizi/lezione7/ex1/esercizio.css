@@ -1,0 +1,58 @@
+div{
+    margin: 10px;
+}
+h2{
+    font-size: 22px;
+    color:red;
+}
+h3{
+    text-decoration: underline;
+}
+section{
+    font-size: 20px;
+}
+span{
+    color: grey;
+}
+a.menu, div.primopiano, h3{
+    color: orange;
+}
+a#home{
+    font-size: 1.5em;
+    color: blueviolet;
+}
+a{
+    color: gray;
+}  
+/*...*/
+@media screen and (min-width:300px){
+    /*tablet + smartphone grandi*/
+    h2{
+        color: aqua;
+    }
+}
+@media screen and (min-width:450px) {
+    /*tablet + notebook piccoli*/
+    h2{
+        color: chartreuse;
+    }
+}
+@media screen and (min-width:600px) {
+    /*notebook + desktop*/
+    h2{
+        color: deeppink;
+    }
+    h3{
+        text-decoration: none;
+    }
+}
+@media screen and (min-width:750px) {
+    /*notebook + desktop*/
+    h2{
+        color: deeppink;
+    }
+    h3{
+        text-decoration: none;
+    }
+}
+

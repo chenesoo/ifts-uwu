@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>Richiedi preventivo</h1>
+    <form action="inviaDati.php">
+    <fieldset>
+        <label for="txtNome">Nome* </label>
+            <input type="text" name="txtNome" id="txtNome" placeholder="Nome" required>
+        <label for="txtCognome">Cognome* </label>
+            <input type="text" name="txtCognome" id="txtCognome" placeholder="Cognome" required><br>
+        <label for="txtEmail">Email* </label>
+            <input type="text" name="txtEmail" id="txtEmail" placeholder="Email" required>
+        <label for="txtTelefono">Telefono </label>
+            <input type="text" name="txtTelefono" id="txtTelefono" placeholder="+39 333 123 4567"><br>
+        <label for="arrivo">Arrivo* </label>
+            <input type="date" name="arrivo" id="arrivo" placeholder="Arrivo" required>
+        <label for="partenza">Partenza* </label>
+            <input type="date" name="partenza" id="partenza" placeholder="Partenza" required><br>
+        <label for="nAdulti">Adulti* </label>
+            <input type="number" name="nAdulti" id="nAdulti" placeholder="N adulti" min="1" step="1" required>
+        <label for="nBambini">Bambini* </label>
+            <input type="number" name="nBambini" id="nBambini" placeholder="N bambini" min="0" step="1" required><br>
+        <label for="trattamento">Trattamento </label>
+            <input list="trattamento" placeholder="Seleziona il trattamento">
+            <datalist id="trattamento">
+                <option value="Solo pernottamento"></option>
+                <option value="Camera e colazione"></option>
+            </datalist>
+            <label for="sistemazione">Sistemazione </label>
+            <input list="sistemazione" placeholder="Seleziona tipo di camera">
+            <datalist id="sistemazione">
+                <option value="Camera singola"></option>
+                <option value="Camera doppia"></option>
+                <option value="Camera matrimoniale"></option>
+                <option value="Camera matrimoniale + 1 letto"></option>
+                <option value="Camera matrimoniale + castello"></option>
+                <option value="Camera matrimoniale + 2 Family"></option>
+            </datalist>
+    </fieldset><br>
+    <label for="messaggio">Messaggio* </label><br>
+            <textarea name="messaggio" id="messaggio" cols="90" rows="5" placeholder="Messaggio" required></textarea><br>
+            <input type="checkbox" name="chkPolicy" id="policy" required>
+            <label for="policy">Acconsento al trattamento dei dati forniti per le finalità indicate dall'informativa sulla Privacy Policy</label><br><br>
+            <section id="pulsante">
+                <button type="submit">Richiedi preventivo</button>
+            </section>
+        </form>
+</body>
+</html>

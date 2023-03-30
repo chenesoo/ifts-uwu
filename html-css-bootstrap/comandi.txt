@@ -1,0 +1,4 @@
+alt + freccia su o giu ---> sposta righe di codice
+clicco una riga + alt + clicco un altra riga (tenendo premuto alt) ecc... ---> scrittura multipla
+shift + alt + f ---> ordina il codice
+shift + alt + freccia giù ---> copia sotto la riga sopra
