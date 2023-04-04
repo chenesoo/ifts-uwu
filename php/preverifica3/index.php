@@ -1,6 +1,5 @@
 <?php
 include("include/connessione_db.php");
-include("include/elenco_records.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +17,14 @@ include("include/elenco_records.php");
     WHERE 1";
 
     $num_rec = fz_sql($sql_1);
-    echo "numero totale prenotazioni: " . $num_rec[0]['elenco']."<br>";
+    echo "numero utenti registrati: " . $num_rec[0]['elenco']."<br>";
 
     //2 creazione form
     ?>
-    <form method="POST" action="utenti_registrati.php" enctype="multipart/form-data">
+    <form method="POST" action="utenti_registrati.php">
     e-mail: <input type="email" name=email><br>
         Password: <input type="password" name=password><br>
-        <button>registrati</button>
+        <button>cerca</button>
 </form> 
 </body>
 </html>

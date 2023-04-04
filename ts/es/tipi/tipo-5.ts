@@ -3,6 +3,7 @@ un numero compreso tra 0 e 100. Crea una funzione che accetta un punteggio come 
 restituisce una stringa che indica se il punteggio è insufficiente, sufficiente, buono o 
 eccellente
 */
+console.log("=====[ tipo-05.ts ]=====");
 
 enum Voto {
     Insufficiente=0,
