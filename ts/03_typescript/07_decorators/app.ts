@@ -5,10 +5,13 @@ function logged(constructorFn: Function) {
 @logged
 class Person {
     constructor() {
-        console.log("Hi!");
+        console.log("Person: Hi!");
     }
 }
 
+let p: Person=new Person();
+
+/*
 // Factory
 function logging(value: boolean) {
     return value ? logged : null;
@@ -98,3 +101,4 @@ class Course {
 const course = new Course("Super Course");
 course.printStudentNumbers("anything", true);
 course.printStudentNumbers("anything", false);
+*/

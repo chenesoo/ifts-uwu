@@ -37,8 +37,3 @@ $records = $st->fetchAll(PDO::FETCH_ASSOC);
 //se tutto è andato bene, estrae i record
 return $records;
 }
-
-
-
-
-?>
