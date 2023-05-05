@@ -1,0 +1,19 @@
+{
+    "name": "enaip/demo",
+    "description": "pacchetto demo sus",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Enaip\\Demo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "che ne so"
+        }
+    ],
+    "require": {
+        "ramsey/uuid": "^4.7"
+    }
+}

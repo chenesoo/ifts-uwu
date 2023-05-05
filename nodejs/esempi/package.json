@@ -1,0 +1,16 @@
+{
+  "name": "esempi",
+  "version": "1.0.0",
+  "description": "sus",
+  "main": "builtin_http.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon builin_http.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
