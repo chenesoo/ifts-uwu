@@ -1,0 +1,195 @@
+function myConsoleLog(msg: string, obj?: any): void {
+  let element = document.getElementById('app');
+  //console.log('app element content: ', element.innerHTML);
+  let objString = '';
+  if (obj != null) {
+    objString = ': ' + JSON.stringify(obj);
+  }
+  // questo stampa nell'HTML (versione 1)
+  //element.innerHTML = element.innerHTML + '<p>' + msg + objString + '</p>';
+
+  // questo stampa nell'HTML (versione 2)
+  let p = document.createElement('p');
+  p.append(msg, objString);
+  element.append(p);
+
+  // questo stmpa nella console
+  console.log(msg, obj);
+}
+
+interface Persona {
+  nome: string;
+  cognome: string;
+  numeroCasuale: number;
+}
+
+const handler = function (resolve, reject) {
+  // calcolo che impiega del tempo
+  // …
+  const valore: Persona = {
+    nome: 'daniele',
+    cognome: 'arduini',
+    numeroCasuale: Math.random(),
+  };
+
+  if (valore != null) {
+    resolve(valore);
+  } else {
+    reject('Errore nella costruzione del valore');
+  }
+};
+
+let persona: Persona = null;
+const promise = new Promise(handler);
+
+myConsoleLog('ottengo il risultato 1: ', persona);
+
+promise.then((risultato: Persona) => {
+  myConsoleLog('(1) risultato 1 ottenuto: ', risultato);
+
+  persona = risultato;
+  // persona.nome;
+  // persona.cognome;
+});
+
+myConsoleLog('questo messaggio arriva subito, sai spiegare perché?');
+
+myConsoleLog('Qui persona è null, perché? persona: ', persona);
+
+promise.then((risultato2: Persona) => {
+  myConsoleLog('(2) risultato 2 ottenuto: ', risultato2);
+});
+
+promise
+  .then((risultato: Persona) => {
+    myConsoleLog('(3) risultato 1 ottenuto: ', risultato);
+  })
+  .catch((error) => {
+    myConsoleLog('(4) risultato in errore: ', error);
+  });
+
+/**
+ * Stampa la variabile persona ogni secondo fino a quando non è valorizzata
+ */
+function stampaPersona() {
+  myConsoleLog('stampaPersona(): ', persona);
+  if (persona == null) {
+    setTimeout(() => {
+      stampaPersona();
+    }, 1000);
+  }
+}
+
+stampaPersona();
+
+/**
+ * Senza le Promise():
+ */
+function dammiUnaPersona(): Persona {
+  const risultato = {
+    nome: 'Daniele',
+    cognome: 'Arduini',
+    numeroCasuale: Math.random(),
+  };
+  return risultato;
+}
+
+myConsoleLog('prima di dammiUnaPersona(): ', persona);
+persona = dammiUnaPersona();
+myConsoleLog('dopo di dammiUnaPersona(): ', persona);
+
+/**
+ * Con le Promise():
+ */
+function dammiUnaPromisePersona(): Promise<Persona> {
+  return new Promise<Persona>((resolve, reject) => {
+    const risultato = {
+      nome: 'Daniele',
+      cognome: 'Arduini',
+      numeroCasuale: Math.random(),
+    };
+    resolve(risultato);
+    //return risultato;
+  });
+}
+
+let pp: Promise<Persona> = dammiUnaPromisePersona();
+pp.then((p) => {
+  persona = p;
+});
+
+// è simile a:
+dammiUnaPromisePersona().then((p) => {
+  persona = p;
+});
+
+//console.log(persona);
+//console.log(persona);
+//console.log(persona);
+//console.log(persona);
+//console.log(persona);
+
+// =======================
+
+/**
+ * Funzione che data una persona, va a recuperare l'elenco dei documenti di quella persona
+ * @param p
+ * @returns
+ */
+function scaricaDocumenti(p: Persona): Promise<string[]> {
+  const res = ['doc1', 'doc2'];
+
+  // uso la versione semplificata della resolve, perché ho già il risultato
+  return Promise.resolve(res);
+
+  // Oppure uso la versione classica della resolve
+  //return new Promise<string[]>((resolve, reject) => {
+  //    resolve(res);
+  //});
+
+  // Oppure in caso di errore:
+  //return Promise.reject("Errore di comunicazione con il server");
+
+  // Oppure in caso di errore con Promise esplicita:
+  //return new Promise<string[]>((resolve, reject) => {
+  //    reject("Errore di comunicazione con il server");
+  //});
+}
+
+let listaDocumenti: string[] = null;
+
+let promiseDocumenti = promise.then((risultato) => {
+  // console.log("risultato 1 ottenuto +: " + risultato);
+  myConsoleLog('scarico i documenti: ', risultato);
+  let pDocumenti = scaricaDocumenti(risultato);
+  return pDocumenti;
+});
+
+promiseDocumenti
+  .then((lista) => {
+    listaDocumenti = lista;
+  })
+  .catch((error) => {
+    myConsoleLog('risultato in errore: ', error);
+  });
+
+if (listaDocumenti != null) {
+  myConsoleLog('Stampo i documenti da codice globale:');
+  for (let i = 0; listaDocumenti != null && i < listaDocumenti.length; i++) {
+    const doc = listaDocumenti[i];
+    myConsoleLog('Documento+: ' + doc);
+  }
+} else {
+  myConsoleLog(
+    'Non posso stampare i documenti da codice globale perché listaDocumenti ancora null:',
+    listaDocumenti
+  );
+}
+
+promiseDocumenti.then((lista) => {
+  myConsoleLog('Stampo i documenti da dentro una promise:');
+  for (let i = 0; i < lista.length; i++) {
+    const doc = lista[i];
+    myConsoleLog('Documento+: ' + doc);
+  }
+});

@@ -1,0 +1,19 @@
+<div class="row m-2" *ngIf="film != null">
+  <div class="col-3">
+    <img [src]="film.imageUrl" width="100%">
+  </div>
+  <div class="col">
+    <h2>{{ film.name }} ({{ film.year }})</h2>
+    <p>{{ film.description }}</p>
+    <h3>Cast:</h3>
+    <ul>
+      <li *ngFor="let attore of film.cast">
+        {{ attore }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<h2 *ngIf="errorMessage != null">
+  {{errorMessage}}
+</h2>
