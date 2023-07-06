@@ -1,12 +1,18 @@
+<div class="row mt-3 mb-3" *ngIf="dettaglio">
+  <a [routerLink]="'/'" class="btn btn-primary">
+    <i class="fas fa-chevron-left"></i>Elenco
+  </a>
+</div>
+
 <div class="row m-2" *ngIf="film != null">
   <div class="col-3">
     <img [src]="film.imageUrl" width="100%">
   </div>
   <div class="col">
     <h2>{{ film.name }} ({{ film.year }})</h2>
-    <p>{{ film.description }}</p>
-    <h3>Cast:</h3>
-    <ul>
+    <p *ngIf="dettaglio">{{ film.description }}</p>
+    <h3 *ngIf="dettaglio">Cast:</h3>
+    <ul *ngIf="dettaglio">
       <li *ngFor="let attore of film.cast">
         {{ attore }}
       </li>
@@ -14,6 +20,6 @@
   </div>
 </div>
 
-<h2 *ngIf="errorMessage != null">
+<h2 *ngIf="errorMessage != null && dettaglio">
   {{errorMessage}}
 </h2>
